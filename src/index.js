@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import fireapp from './store'
+import fireApp from './firebaseConfig'
 import { createStore } from 'redux'
 import * as serviceWorker from './serviceWorker'
 import './index.css'

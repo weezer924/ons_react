@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import "firebase/auth"
 
 const firebaseConfig = {
 	apiKey: '',
@@ -10,8 +11,6 @@ const firebaseConfig = {
 	appId: ''
 }
 
-try {
-  firebase.initializeApp(firebaseConfig)
-} catch (error) {
-  console.log(error.message)
-}
+const fireApp = firebase.initializeApp(firebaseConfig)
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+export default fireApp
