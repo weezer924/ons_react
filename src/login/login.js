@@ -30,6 +30,9 @@ class Login extends Component {
 
     let provider = new firebase.auth.GoogleAuthProvider()
     provider.addScope('https://www.googleapis.com/auth/admin.directory.user.readonly')
+    provider.setCustomParameters({
+      hd: 'shift-plus.jp'
+    });
     firebase.auth().signInWithPopup(provider).then(res => {
       this.updateUser(self, res.user)
     })
