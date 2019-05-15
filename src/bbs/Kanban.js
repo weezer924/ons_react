@@ -51,7 +51,7 @@ class Kanban extends Component {
       ref.doc(this.state.docName).collection(this.state.collectionName).doc(postOne.id).update({
         like: like,
         likers: likers
-      })
+      }).catch(error => console.log(error))
     }
   }
 

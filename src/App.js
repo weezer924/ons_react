@@ -18,9 +18,6 @@ class App extends Component {
       collectionName: this.getCollectionName()
     }
     this.logout = this.logout.bind(this)
-
-    const user = firebase.auth().currentUser
-    console.log(user)
   }
 
   getNowYMD() {

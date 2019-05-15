@@ -41,7 +41,7 @@ class InputPost extends Component {
       date: firebase.firestore.Timestamp.fromDate(new Date()),
       owner: this.props.state.email,
       likers: []
-    })
+    }).catch(error => console.log(error))
     this.setState({value: ''});
   }
 
