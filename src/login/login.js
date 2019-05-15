@@ -21,24 +21,34 @@ class Login extends Component {
   }
 
   login() {
+    const self = this
+    const user = firebase.auth().currentUser
+    if (user) {
+      this.updateUser(self, user)
+      return
+    }
+
     let provider = new firebase.auth.GoogleAuthProvider()
     provider.addScope('https://www.googleapis.com/auth/admin.directory.user.readonly')
-    const self = this
     firebase.auth().signInWithPopup(provider).then(res => {
-      self.props.dispatch({
-        type: 'UPDATE_USER',
-        value: {
-          login: true,
-          username: res.user.displayName,
-          email: res.user.email
-        }
-      })
-      self.handleToAppPage()
+      this.updateUser(self, res.user)
     })
   }
 
   handleToAppPage = () => {
     this.props.history.push('/App')
+  }
+
+  updateUser(self, user) {
+    self.props.dispatch({
+      type: 'UPDATE_USER',
+      value: {
+        login: true,
+        username: user.displayName,
+        email: user.email
+      }
+    })
+    self.handleToAppPage()
   }
 
   render() {
@@ -53,7 +63,7 @@ class Login extends Component {
               ”いま”をShareしよう
             </Card.Text>
             <br />
-            <Button variant="outline-primary" onClick={this.login}>ログイン with Google</Button>
+            <Button variant="outline-primary" onClick={this.login}>ログイン</Button>
           </Card.Body>
         </Card>
       </div>
