@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { Redirect } from 'react-router-dom'
 import { Navbar, Button } from 'react-bootstrap'
 import './App.css'
 
-import Kanban from './bbs/Kanban'
+import Kanban from './bbs/kanban'
 import InputPost from './bbs/inputPost'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -76,11 +75,8 @@ class App extends Component {
             {/* </ButtonGroup> */}
           </Navbar.Collapse>
         </Navbar>
-        <br />
         <Kanban docName={this.state.docName} collectionName={this.state.collectionName} />
-        <br />
-        <br />
-        <br />
+        <br /><br /><br />
         <InputPost docName={this.state.docName} collectionName={this.state.collectionName} />
       </div>
     )

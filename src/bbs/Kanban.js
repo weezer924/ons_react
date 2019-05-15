@@ -5,6 +5,11 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 class Kanban extends Component {
+  cardStyle = {
+    margin: "3px",
+    border: '1px solid #555',
+    boxShadow: '0px 1px 10px #488a9e'
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -60,15 +65,19 @@ class Kanban extends Component {
   }
 
   setViewPosts() {
-    let result = [];
     if (this.state.posts === null || this.state.posts.length === 0) {
-      return [<span key="0">今日のつぶちゅうまだない<span role="img" aria-label="mouse">🐭</span></span>]
+      return [
+        <span key="0">今日のつぶちゅうまだない
+          <span role="img" aria-label="mouse">🐭</span>
+        </span>
+      ]
     }
 
+    let result = [];
     for(let i in this.state.posts) {
       result.push(
         <Col sm={3} key={i}>
-          <Card style={{margin: "3px", border: '1px solid #555', boxShadow: '0px 1px 10px #488a9e'}}>
+          <Card style={this.cardStyle}>
             <Card.Body>
               <Card.Text>{this.state.posts[i].data.text}</Card.Text>
               <Button size="sm" onClick={() => this.addLikeToPost(this.state.posts[i])}>
@@ -85,10 +94,8 @@ class Kanban extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          {this.setViewPosts()}
-        </Row>
+      <Container style={this.containerStyle}>
+        <Row>{this.setViewPosts()}</Row>
       </Container>
     )
   }

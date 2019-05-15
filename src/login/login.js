@@ -15,6 +15,22 @@ class Login extends Component {
     backgroudColor: ''
   }
 
+  msg = {
+    fontSize: '40pt',
+    fontWeight: 'bold'
+  }
+
+  sideMsg = {
+    fontSize: '13pt',
+    fontWeight: 'bold'
+  }
+
+  card = {
+    width: '20rem',
+    border: '1px solid #555',
+    boxShadow: '0px 1px 10px #488a9e'
+  }
+
   constructor(props) {
     super(props)
     this.login = this.login.bind(this)
@@ -57,13 +73,13 @@ class Login extends Component {
   render() {
     return (
       <div style={this.container}>
-        <Card style={{ width: '20rem', border: '1px solid #555', boxShadow: '0px 1px 10px #488a9e' }}>
+        <Card style={this.card}>
           <Card.Img variant="top" />
           <Card.Body>
-            <Card.Title style={{ fontSize: 42 }}>Tsubu <span role="img" aria-label="mouse">🐭</span></Card.Title>
+            <Card.Title style={this.msg}>Tsubu <span role="img" aria-label="mouse">🐭</span></Card.Title>
             <br />
             <Card.Text>
-              ”いま”をShareしよう
+              <p style={this.sideMsg}>”いま”をShareしよう</p>
             </Card.Text>
             <br />
             <Button variant="outline-primary" onClick={this.login}>ログイン</Button>
