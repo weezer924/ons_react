@@ -46,9 +46,6 @@ class Login extends Component {
 
     let provider = new firebase.auth.GoogleAuthProvider()
     provider.addScope('https://www.googleapis.com/auth/admin.directory.user.readonly')
-    provider.setCustomParameters({
-      hd: 'shift-plus.jp'
-    });
     firebase.auth().signInWithPopup(provider).then(res => {
       this.updateUser(self, res.user)
     })
@@ -78,8 +75,8 @@ class Login extends Component {
           <Card.Body>
             <Card.Title style={this.msg}>Tsubu <span role="img" aria-label="mouse">🐭</span></Card.Title>
             <br />
-            <Card.Text>
-              <p style={this.sideMsg}>”いま”をShareしよう</p>
+            <Card.Text style={this.sideMsg}>
+              ”いま”をShareしよう
             </Card.Text>
             <br />
             <Button variant="outline-primary" onClick={this.login}>ログイン</Button>
